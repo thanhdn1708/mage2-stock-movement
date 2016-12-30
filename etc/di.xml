@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MindArc_Inventory extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the MIT License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     http://opensource.org/licenses/mit-license.php
+ * 
+ *                     @category  MindArc
+ *                     @package   MindArc_Inventory
+ *                     @copyright Copyright (c) 2016
+ *                     @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="MindArcInventoryGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MindArcInventoryTransactionGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">MindArc\Inventory\Model\ResourceModel\Transaction\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MindArcInventoryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MindArcInventoryReceiptGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">MindArc\Inventory\Model\ResourceModel\Receipt\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MindArcInventoryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MindArcInventoryItemGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">MindArc\Inventory\Model\ResourceModel\Stock\Item\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MindArcInventoryGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="MindArc\Inventory\Model\ResourceModel\Transaction\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mindarc_inventory_transaction</argument>
+            <argument name="eventPrefix" xsi:type="string">mindarc_inventory_transaction_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">transaction_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">MindArc\Inventory\Model\ResourceModel\Transaction</argument>
+        </arguments>
+    </type>
+    <type name="MindArc\Inventory\Model\ResourceModel\Receipt\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mindarc_inventory_receipt</argument>
+            <argument name="eventPrefix" xsi:type="string">mindarc_inventory_receipt_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">receipt_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">MindArc\Inventory\Model\ResourceModel\Receipt</argument>
+        </arguments>
+    </type>
+    <type name="MindArc\Inventory\Model\ResourceModel\Stock\Item\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">cataloginventory_stock_item</argument>
+            <argument name="eventPrefix" xsi:type="string">mindarc_inventory_stock_item_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">stock_item_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\CatalogInventory\Model\ResourceModel\Stock\Item</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mindarc_inventory_transaction_listing_data_source" xsi:type="string">MindArc\Inventory\Model\ResourceModel\Transaction\Grid\Collection</item>
+                <item name="mindarc_inventory_receipt_listing_data_source" xsi:type="string">MindArc\Inventory\Model\ResourceModel\Receipt\Grid\Collection</item>
+                <item name="mindarc_inventory_item_listing_data_source" xsi:type="string">MindArc\Inventory\Model\ResourceModel\Stock\Item\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- <preference for="Magento\CatalogInventory\Model\StockManagement" type="MindArc\Inventory\Model\StockManagement"/> -->
+    <type name="Magento\CatalogInventory\Model\StockManagement">
+        <plugin name="order-transaction" type="MindArc\Inventory\Model\StockManagement" sortOrder="10"/>
+    </type>
+</config>

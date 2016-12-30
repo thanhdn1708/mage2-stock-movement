@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MindArc_Inventory extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the MIT License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     http://opensource.org/licenses/mit-license.php
+ * 
+ *                     @category  MindArc
+ *                     @package   MindArc_Inventory
+ *                     @copyright Copyright (c) 2016
+ *                     @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Magento\CatalogInventory\Model\Stock\Item" type="MindArc\Inventory\Model\Item"/>
+</config>

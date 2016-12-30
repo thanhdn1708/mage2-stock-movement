@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="cataloginventory_stock_item_save_before">
+	    <observer name="cataloginventorysavebefore" instance="MindArc\Inventory\Observer\Cataloginventorysavebefore" />
+	</event>
+	<event name="cataloginventory_stock_item_save_after">
+	    <observer name="cataloginventorysaveafter" instance="MindArc\Inventory\Observer\Cataloginventorysaveafter" />
+	</event>
+</config>

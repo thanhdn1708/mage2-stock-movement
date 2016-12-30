@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MindArc_Inventory extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the MIT License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     http://opensource.org/licenses/mit-license.php
+ * 
+ *                     @category  MindArc
+ *                     @package   MindArc_Inventory
+ *                     @copyright Copyright (c) 2016
+ *                     @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="MindArc_Inventory::inventory" title="Stock Movement" module="MindArc_Inventory" sortOrder="20" resource="MindArc_Inventory::inventory" parent="Magento_Catalog::catalog"/>
+        <add id="MindArc_Inventory::item" title="Items" module="MindArc_Inventory" sortOrder="10" action="mindarc_inventory/item" resource="MindArc_Inventory::item" parent="MindArc_Inventory::inventory"/>
+        <add id="MindArc_Inventory::transaction" title="Transactions" module="MindArc_Inventory" sortOrder="20" action="mindarc_inventory/transaction" resource="MindArc_Inventory::transaction" parent="MindArc_Inventory::inventory"/>
+        <add id="MindArc_Inventory::receipt" title="Receipts" module="MindArc_Inventory" sortOrder="30" action="mindarc_inventory/receipt" resource="MindArc_Inventory::receipt" parent="MindArc_Inventory::inventory"/>
+    </menu>
+</config>

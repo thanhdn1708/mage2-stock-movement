@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MindArc_Inventory extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the MIT License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     http://opensource.org/licenses/mit-license.php
+ * 
+ *                     @category  MindArc
+ *                     @package   MindArc_Inventory
+ *                     @copyright Copyright (c) 2016
+ *                     @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="MindArc\Inventory\Block\Adminhtml\Transaction\Edit" name="mindarc_inventory_transaction_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="MindArc\Inventory\Block\Adminhtml\Transaction\Edit\Tabs" name="mindarc_inventory_transaction_tabs">
+                <block class="MindArc\Inventory\Block\Adminhtml\Transaction\Edit\Tab\Transaction" name="mindarc_inventory_transaction_edit_tab_transaction"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">transaction</argument>
+                    <argument name="block" xsi:type="string">mindarc_inventory_transaction_edit_tab_transaction</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
