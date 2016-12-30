@@ -83,7 +83,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         // Magento 2 default is row_id, but Whitefox is entity_id
         $this->joinProducts()->getSelect()->joinLeft(
             array($fkTable => $attribute->getBackendTable()),
-            $fkTable.'.row_id = `cataloginventory_stock_item`.product_id AND '.
+            $fkTable.'.entity_id = `cataloginventory_stock_item`.product_id AND '.
             $fkTable.'.attribute_id = '.$attribute->getAttributeId().' AND '.
             $fkTable.'.store_id = 0',
             array($alias => 'value')
